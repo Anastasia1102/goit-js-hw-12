@@ -1,9 +1,3 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
 @import url('./reset.css');
 
 .root {
@@ -48,10 +42,29 @@ button {
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #fff;
-  transition: background 0.3s ease;
 }
 
 button:hover {
+  background: #6c8cff;
+}
+
+#load-more {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 130px;
+  height: 40px;
+  border: none;
+  background: #4e75ff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin: auto;
+  margin-top: 24px;
+}
+
+#load-more:hover {
   background: #6c8cff;
 }
 
@@ -83,7 +96,7 @@ input {
 }
 
 .loader {
-  display: block;
+  display: none;
   position: relative;
   margin-top: 24px;
   height: 12px;
@@ -100,7 +113,7 @@ input {
   height: 100%;
   width: 0;
   background: #ff3d00;
-  animation: 6s prog ease-in infinite;
+  animation: 1s prog ease-in infinite;
 }
 
 @keyframes prog {
@@ -127,8 +140,8 @@ input {
   justify-content: space-between;
 }
 
-.image {
-  height: 152px;
+.photo-card img {
+  max-height: 152px;
   min-width: 100%;
   object-fit: cover;
 }
@@ -154,6 +167,14 @@ input {
   height: 40px;
   margin-top: 4px;
   margin-bottom: 4px;
+  max-width: 74px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .span-text {
