@@ -42,25 +42,26 @@ export async function fetchImages(query, page) {
         imagesShown += response.data.hits.length;
         console.log(response.data);
         loader.style.display = 'none';
-        if (response.data.hits.length === 0) {
-            if (totalHits === 0) {
+        if (response.data.hits.length === 0 && totalHits === 0) {
                 iziToast.error({
                     message: 'Sorry, there are no images matching your search query. Please try again!',
                     position: "topRight"
                 });
-            } else if (imagesShown >= totalHits) {
-                iziToast.info({
-                    message: 'We are sorry, but you have reached the end of search results.',
-                    position: "center"
-                });
-            }
         } else {
             GalleryMarkup(response.data.hits);
             lightbox.refresh();
             debouncedScrollGallery();
-            loadMoreButton.style.display = 'block';
+            if (imagesShown >= totalHits) {
+                loadMoreButton.style.display = 'none';
+                iziToast.info({
+                    message: 'We are sorry, but you have reached the end of search results.',
+                    position: "center"
+                });
+            } else {
+                loadMoreButton.style.display = 'block';
+            }
         }
-    } catch (error) {
+        }catch (error) {
         console.error('Error fetching images:', error);
         loader.style.display = 'none';
         iziToast.error({
